@@ -78,7 +78,6 @@ Create `/etc/ansible/hosts`:
 IP ansible_connection=local ansible_python_interpreter=/usr/bin/python3
 ```
 ###  Ansible Playbook
-
 Create `/etc/ansible/deploy-ssl.yml`:
 ```yaml
 - name: Deploy SSL certificate
@@ -112,6 +111,12 @@ Create `/etc/ansible/deploy-ssl.yml`:
       args:
         chdir: /home/ubuntu/deploy
 ```
+## Restarting Nginx  with Docker-Compose  
+
+- Nginx is running inside a Docker container not as a standalone system service 
+- `docker-compose` to restart the container and apply the updated SSL certificates.  
+This ensures that the new certificates are loaded correctly.  
+
 ## Configuration Files
 Create `/etc/letsencrypt/renewal-hooks/deploy/deploy-cert.sh`
 ```bash
